@@ -1,16 +1,15 @@
 import 'package:chat_app/Constants/constants.dart';
-import 'package:chat_app/Screens/SignUpScreen.dart';
 import 'package:chat_app/Screens/Widgets/Custom_Button.dart';
 import 'package:chat_app/Screens/Widgets/Custom_Text.dart';
 import 'package:chat_app/Screens/Widgets/Custom_Text_Field.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       backgroundColor:Pcolor ,
       body:Padding(
        
@@ -23,22 +22,21 @@ class LoginScreen extends StatelessWidget {
            CustomText(color: Colors.white,fontFamily: 'pacifico',fontSize:32,text: 'Scholar Chat',),
           const SizedBox(height: 70),
             Align(alignment: Alignment.topLeft,
-              child: CustomText(text: 'LOGIN',color: Colors.white,fontSize: 23))
+              child: CustomText(text: 'SIGNUP',color: Colors.white,fontSize: 23))
            ,const SizedBox(height: 15),
             CustomTextField(hintText: 'Email'),
             const SizedBox(height: 8),
             CustomTextField(hintText: 'Password'),
-           const SizedBox(height: 25),
-            CustomButton(title: 'LOGIN',),
+           const SizedBox(height:25),
+            CustomButton(title: 'SIGN UP',),
            const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-           CustomText(color: Colors.white,fontSize: 15,text: 'don\'t have an account?'),
-          GestureDetector
-          (
-            onTap: (){Navigator.pushNamed(context, 'Sign');},
-            child: CustomText(color:Scolor,fontSize: 15,text: '    Sign UP Now',fontWeight: FontWeight.bold,))
+           CustomText(color: Colors.white,fontSize: 15,text: 'already have an account?'),
+          GestureDetector(
+            onTap: (){Navigator.pushNamed(context, 'Login');},
+            child: CustomText(color:Scolor,fontSize: 15,text: '    Login Now',fontWeight: FontWeight.bold,))
 
 
             ],)

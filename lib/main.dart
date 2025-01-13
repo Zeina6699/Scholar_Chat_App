@@ -1,3 +1,4 @@
+import 'package:chat_app/Screens/SignUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_app/Screens/LoginScreen.dart';
 
@@ -11,8 +12,13 @@ class SchoolarChatApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return MaterialApp(
+      routes:{
+        'Login':(context)=>LoginScreen(),
+        'Sign':(context)=>SignUpScreen()
+      },
+      initialRoute: '/Login'
+     , debugShowCheckedModeBanner: false,
       home: Scaffold(
         body:LoginScreen()
       ));}}
