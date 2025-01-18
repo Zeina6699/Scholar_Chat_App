@@ -10,7 +10,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor:Pcolor ,
+      backgroundColor:kPcolor ,
       body:Padding(
        
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical:20),
@@ -35,8 +35,8 @@ class SignUpScreen extends StatelessWidget {
               children: [
            CustomText(color: Colors.white,fontSize: 15,text: 'already have an account?'),
           GestureDetector(
-            onTap: (){Navigator.pushNamed(context, 'Login');},
-            child: CustomText(color:Scolor,fontSize: 15,text: '    Login Now',fontWeight: FontWeight.bold,))
+            onTap: (){Navigator.pop(context);},
+            child: CustomText(color:kScolor,fontSize: 15,text: '    Login Now',fontWeight: FontWeight.bold,))
 
 
             ],)
