@@ -1,7 +1,8 @@
+import 'package:chat_app/Screens/ChatScreen.dart';
+import 'package:chat_app/Screens/LoginScreen.dart';
 import 'package:chat_app/Screens/SignUpScreen.dart';
 import 'package:chat_app/firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_app/Screens/LoginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -21,7 +22,8 @@ class SchoolarChatApp extends StatelessWidget {
     return MaterialApp(
       routes:{
         '/Login':(context)=> LoginScreen(),
-        '/Sign':(context)=>const SignUpScreen()
+        '/Sign':(context)=> SignUpScreen(),
+        '/Chat':(context)=> Chatscreen(),
       },
       initialRoute: '/Login'
      , debugShowCheckedModeBanner: false,
