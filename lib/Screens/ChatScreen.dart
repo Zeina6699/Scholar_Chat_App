@@ -3,9 +3,13 @@ import 'package:chat_app/Screens/Widgets/Custom_Chat_Bubble.dart';
 import 'package:chat_app/Screens/Widgets/Custom_Text.dart';
 import 'package:chat_app/Screens/Widgets/Custom_Text_Field.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Chatscreen extends StatelessWidget {
-  const Chatscreen({super.key});
+ Chatscreen({super.key});
+  CollectionReference messages=FirebaseFirestore.instance.collection(KMessagesCollection);
+  TextEditingController controller=TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +34,12 @@ class Chatscreen extends StatelessWidget {
         children: [
           Expanded(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child:ListView.builder(
                 itemBuilder: (context,index){
                   
-                  return  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                  return  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: CustomChatBubble(),
                   );
             
@@ -47,12 +51,19 @@ class Chatscreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16),
                 child:TextField(
+                  controller: controller,
+                  onSubmitted: (data){
+                    messages.add({
+                      'message':data
+                    });
+                    controller.clear();
+                  },
                   decoration: InputDecoration(
                     hintText: 'Send Message',
-                    suffixIcon: Icon(Icons.send,color: kPcolor,),
+                    suffixIcon: const Icon(Icons.send,color: kPcolor,),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: kPcolor
                       )
                     )

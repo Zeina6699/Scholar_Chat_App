@@ -23,7 +23,7 @@ class SchoolarChatApp extends StatelessWidget {
       routes:{
         '/Login':(context)=> LoginScreen(),
         '/Sign':(context)=> SignUpScreen(),
-        '/Chat':(context)=> Chatscreen(),
+        '/Chat':(context)=>Chatscreen(),
       },
       initialRoute: '/Login'
      , debugShowCheckedModeBanner: false,
