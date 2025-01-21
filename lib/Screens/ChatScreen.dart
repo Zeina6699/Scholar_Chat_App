@@ -14,8 +14,8 @@ class Chatscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<QuerySnapshot>(
-      future:messages.get() ,
+    return StreamBuilder<QuerySnapshot>(
+      stream:messages.snapshots() ,
 
      // future:messages.doc('fWv4ImROBRJLS2ZRNXMO').get() ,
       builder: (context,snapshot){
@@ -26,7 +26,7 @@ class Chatscreen extends StatelessWidget {
         for(int i=0;i<snapshot.data!.docs.length;i++){
           messageList.add(Message.fromJson(snapshot.data!.docs[i]));
         }
-  print(snapshot.data!.docs[0]['messages']);
+ // print(snapshot.data!.docs[0]['messages']);
       
         return Scaffold(
         appBar: AppBar(
