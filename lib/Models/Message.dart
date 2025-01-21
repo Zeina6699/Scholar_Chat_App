@@ -1,9 +1,12 @@
 class Message{
   final String message;
+  final String id;
 
-  Message({required this.message});
+  
 
   factory Message.fromJson(JsonData){
-    return Message(message:JsonData['message']);
+    return Message(JsonData['message'],
+    JsonData['id']!= null ? JsonData['id'].toString() : "معرف غير متوفر");
   }
-}
+
+  Message(this.message, this.id);}

@@ -24,6 +24,7 @@ class _LoginscreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+  
     return  ModalProgressHUD(
       color: Colors.red,
       inAsyncCall: isLoading,
@@ -46,7 +47,7 @@ class _LoginscreenState extends State<LoginScreen> {
                ,const SizedBox(height: 15),
                 CustomTextFormField(onChanged: (data){email=data;},hintText: 'Email'),
                 const SizedBox(height: 8),
-                CustomTextFormField(onChanged: (data){password=data;},hintText: 'Password'),
+                CustomTextFormField(obscured: true, onChanged: (data){password=data;},hintText: 'Password'),
                const SizedBox(height:25),
                 CustomButton(
                   title: 'LOG IN',
@@ -57,7 +58,7 @@ class _LoginscreenState extends State<LoginScreen> {
                       try{
                         await LoginUser();
                       // showSnackBar(context,'Email created successfuly!');
-                       Navigator.pushNamed(context,'/Chat');
+                       Navigator.pushNamed(context,'/Chat',arguments: email);
                        }
                        
           on FirebaseAuthException
@@ -75,10 +76,10 @@ class _LoginscreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-               CustomText(color: Colors.white,fontSize: 15,text: 'already have an account?'),
+               CustomText(color: Colors.white,fontSize: 15,text: 'don\'t have an account'),
               GestureDetector(
-                onTap: (){Navigator.pop(context);},
-                child: CustomText(color:kScolor,fontSize: 15,text: '    Login Now',fontWeight: FontWeight.bold,))
+                onTap: (){Navigator.pushNamed(context,'/Sign');},
+                child: CustomText(color:kScolor,fontSize: 15,text: '    Sign up Now',fontWeight: FontWeight.bold,))
                 
                 
                 ],)

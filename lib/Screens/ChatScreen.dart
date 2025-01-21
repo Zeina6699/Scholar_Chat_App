@@ -1,10 +1,10 @@
 import 'package:chat_app/Constants/constants.dart';
 import 'package:chat_app/Models/Message.dart';
-import 'package:chat_app/Screens/Widgets/Custom_Chat_Bubble.dart';
+import 'package:chat_app/Screens/Widgets/Custom_Chat_Freind_Bubble.dart';
 import 'package:chat_app/Screens/Widgets/Custom_Text.dart';
-import 'package:chat_app/Screens/Widgets/Custom_Text_Field.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:chat_app/Screens/Widgets/Custom_Chat_Bubble.dart';
 
 class Chatscreen extends StatelessWidget {
  Chatscreen({super.key});
@@ -15,8 +15,9 @@ class Chatscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var email=  ModalRoute.of(context)!.settings.arguments;
     return StreamBuilder<QuerySnapshot>(
-      stream:messages.orderBy('createdAt').snapshots() ,
+      stream:messages.orderBy('createdAt',descending: true).snapshots() ,
 
      // future:messages.doc('fWv4ImROBRJLS2ZRNXMO').get() ,
       builder: (context,snapshot){
@@ -38,7 +39,7 @@ class Chatscreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(KLogo,height: 85),
-             const  Text(' Chat'),
+           CustomText(text: 'Chat',fontWeight: FontWeight.bold,)
             
             ],
           ),
@@ -52,13 +53,20 @@ class Chatscreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child:ListView.builder(
+                  reverse: true,
                   controller: ccontroller,
                   itemCount: messageList.length,
                   itemBuilder: (context,index){
                     
-                    return  Padding(
+                    return messageList[index].id==email?
+                    
+                     Padding(
                       padding:const EdgeInsets.symmetric(vertical: 10),
                       child: CustomChatBubble(message: messageList[index]),
+                    ):
+                     Padding(
+                      padding:const EdgeInsets.symmetric(vertical: 10),
+                      child: CustomChatBubbleForFriend(message: messageList[index]),
                     );
               
                   }),
@@ -74,11 +82,13 @@ class Chatscreen extends StatelessWidget {
                       messages.add({
                         'message':data
                         ,'createdAt':DateTime.now()
+                        ,'id':email
                       });
                       controller.clear();
                       ccontroller.animateTo(
-                        ccontroller.position.maxScrollExtent,
-                         duration: Duration(seconds: 1),
+                        0,
+                       // ccontroller.position.maxScrollExtent,
+                         duration: const Duration(seconds: 1),
                           curve: Curves.fastOutSlowIn);
                     },
                     decoration: InputDecoration(

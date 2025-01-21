@@ -5,14 +5,17 @@ class CustomTextFormField extends StatelessWidget {
   CustomTextFormField({
     super.key,
     this.onChanged,
-    this.hintText
+    this.hintText,
+    this.obscured=false
   });
   String? hintText;
   Function(String)? onChanged;
+  bool? obscured;
 
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
+      obscureText: obscured!,
       validator: (data){
         if(data!.isEmpty){
           return 'Field is required !';

@@ -4,8 +4,8 @@ import 'package:chat_app/Models/Message.dart';
 import 'package:chat_app/Screens/Widgets/Custom_Text.dart';
 import 'package:flutter/material.dart';
 
-class CustomChatBubble extends StatelessWidget {
-  CustomChatBubble({
+class CustomChatBubbleForFriend extends StatelessWidget {
+  CustomChatBubbleForFriend({
     required this.message,
     super.key,
   });
@@ -14,7 +14,7 @@ class CustomChatBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.centerRight,
       child: Container(
         padding:const  EdgeInsets.only(left:18,top: 20,bottom: 20,right: 18),
        // alignment: Alignment.centerLeft,
@@ -23,11 +23,11 @@ class CustomChatBubble extends StatelessWidget {
               
               decoration:const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(25),
+                  bottomLeft: Radius.circular(25),
                    topLeft: Radius.circular(25),
                    topRight: Radius.circular(25),
                 ),
-                color:kPcolor,
+                color:KFriendColor,
                
               ),
               child:CustomText(
@@ -38,7 +38,3 @@ class CustomChatBubble extends StatelessWidget {
     );
   }
 }
-
-
-
-

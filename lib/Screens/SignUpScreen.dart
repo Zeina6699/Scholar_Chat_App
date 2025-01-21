@@ -46,7 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                ,const SizedBox(height: 15),
                 CustomTextFormField(onChanged: (data){email=data;},hintText: 'Email'),
                 const SizedBox(height: 8),
-                CustomTextFormField(onChanged: (data){password=data;},hintText: 'Password'),
+                CustomTextFormField(obscured: true, onChanged: (data){password=data;},hintText: 'Password'),
                const SizedBox(height:25),
                 CustomButton(
                   title: 'SIGN UP',
