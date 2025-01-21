@@ -1,12 +1,15 @@
 
 import 'package:chat_app/Constants/constants.dart';
+import 'package:chat_app/Models/Message.dart';
 import 'package:chat_app/Screens/Widgets/Custom_Text.dart';
 import 'package:flutter/material.dart';
 
 class CustomChatBubble extends StatelessWidget {
-  const CustomChatBubble({
+  CustomChatBubble({
+    required this.message,
     super.key,
   });
+  Message message;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,10 @@ class CustomChatBubble extends StatelessWidget {
                 color:kPcolor,
                
               ),
-              child:CustomText(text: 'Hi i\'m a new user',color: Colors.white,fontSize:18),
+              child:CustomText(
+                text:message.message,
+                // 'Hi i\'m a new user',
+                color: Colors.white,fontSize:18),
             ),
     );
   }

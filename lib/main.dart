@@ -21,8 +21,8 @@ class SchoolarChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes:{
-        '/Login':(context)=> LoginScreen(),
-        '/Sign':(context)=> SignUpScreen(),
+        '/Login':(context)=> const LoginScreen(),
+        '/Sign':(context)=> const SignUpScreen(),
         '/Chat':(context)=>Chatscreen(),
       },
       initialRoute: '/Login'
